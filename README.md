@@ -93,6 +93,44 @@ AAP is **independent** — it does not require AMP or AID. All three are complem
 
 All three share the same agent directory structure (`~/.aimaestro/agents/<id>/`).
 
+## Claude Code Plugin
+
+This repo includes a **canvas-actions** skill for Claude Code agents. When installed, agents automatically know how to create canvas pages, embed interactive data, and process user interactions.
+
+### Installation
+
+The skill is distributed via the [AI Maestro plugin](https://github.com/23blocks-OS/ai-maestro-plugins):
+
+```bash
+# Install AI Maestro plugin (includes AAP + AMP + AID skills)
+git clone https://github.com/23blocks-OS/ai-maestro-plugins.git
+cd ai-maestro-plugins
+./build-plugin.sh --clean
+./install-plugin.sh -y
+```
+
+Or add AAP as a source in your own plugin manifest:
+
+```json
+{
+  "name": "agent-actions",
+  "type": "git",
+  "repo": "https://github.com/agentmessaging/agent-actions.git",
+  "ref": "main",
+  "map": {
+    "skills/canvas-actions": "skills/canvas-actions"
+  }
+}
+```
+
+### What the Skill Teaches Agents
+
+- **When** to create a canvas (proactive triggers like "show me", "visualize", "dashboard for")
+- **How** to write data-driven interactive HTML with embedded JSON
+- **Where** to store canvas files (`~/.aimaestro/agents/<id>/canvas/`)
+- **How** to process `[CANVAS]` notifications and read interaction records
+- **Best practices** for the `maestro.send()` bridge API
+
 ## Reference Implementation
 
 [AI Maestro](https://github.com/23blocks-OS/ai-maestro) is the reference implementation of AAP. It includes the bridge script injection, canvas rendering, interaction storage, and agent notification.
