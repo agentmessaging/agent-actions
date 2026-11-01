@@ -81,17 +81,20 @@ The full protocol specification is in the [`spec/`](spec/) directory:
 
 Or read the complete spec in one file: [PROTOCOL.md](PROTOCOL.md)
 
-## Relationship to AMP & AID
+## Relationship to AMP, AID & AFP
 
-AAP is **independent** — it does not require AMP or AID. All three are complementary:
+AAP is **independent** — it does not require AMP, AID or AFP. All four are complementary:
 
 | Protocol | Direction | Purpose |
 |----------|-----------|---------|
 | **AAP** | User → Agent | Structured UI interactions |
 | **[AMP](https://agentmessaging.org)** | Agent → Agent | Signed messages and routing |
 | **[AID](https://agentids.org)** | Agent identity | Cryptographic authentication |
+| **[AFP](https://agentfiles.org)** | Agents ↔ Agents, people | Files shared through S3-compatible storage |
 
-All three share the same agent directory structure (`~/.aimaestro/agents/<id>/`).
+AFP ([repo](https://github.com/agentmessaging/agent-files)) shares files by reference (`afp://space/path`) instead of moving bytes; an AMP message can carry an AFP reference as an attachment (`storage: "afp"`).
+
+AAP, AMP and AID share the same agent directory structure (`~/.aimaestro/agents/<id>/`).
 
 ## Claude Code Plugin
 
