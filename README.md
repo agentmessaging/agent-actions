@@ -98,7 +98,7 @@ AAP, AMP and AID share the same agent directory structure (`~/.aimaestro/agents/
 
 ## Claude Code Plugin
 
-This repo includes a **canvas-actions** skill for Claude Code agents. When installed, agents automatically know how to create canvas pages, embed interactive data, and process user interactions.
+This repo includes a **agent-actions** skill for Claude Code agents. When installed, agents automatically know how to create canvas pages, embed interactive data, and process user interactions.
 
 ### Installation
 
@@ -121,7 +121,7 @@ Or add AAP as a source in your own plugin manifest:
   "repo": "https://github.com/agentmessaging/agent-actions.git",
   "ref": "main",
   "map": {
-    "skills/canvas-actions": "skills/canvas-actions"
+    "skills/agent-actions": "skills/agent-actions"
   }
 }
 ```
